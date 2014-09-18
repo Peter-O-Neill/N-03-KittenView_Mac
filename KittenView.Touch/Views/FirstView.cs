@@ -37,8 +37,10 @@ namespace KittenView.Touch.Views
         {
             base.ViewDidLoad();
 
-            var source = new MvxStandardTableViewSource(TableView, "TitleText Name; ImageUrl ImageUrl");
-            TableView.Source = source;
+			var source = new MvxSimpleTableViewSource(TableView, KittenCell.Key, KittenCell.Key);
+
+			TableView.RowHeight = 100;
+			TableView.Source = source;
 
             var set = this.CreateBindingSet<FirstView, FirstViewModel>();
             set.Bind(source).To(vm => vm.Kittens);
